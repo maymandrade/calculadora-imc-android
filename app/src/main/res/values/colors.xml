@@ -9,4 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="cor_app">#4CA6D5</color>
     <color name="cor_app_verde">#579A6E</color>
+    <color name="cor_app_laranja">#FFFFA500</color>
+    <color name="cor_app_vermelho">#FFFF0000</color>
+    <color name="cor_app_cinza">#FF808080</color>
 </resources>

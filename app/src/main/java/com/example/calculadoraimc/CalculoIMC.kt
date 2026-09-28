@@ -1,23 +1,36 @@
 package com.example.calculadoraimc
 
+//Modularizar o exercicio, colocar o calculo para acontecer fora do onClick, para que o codigo fique mais
+//organizado e reutilizavel
+
+
 import kotlin.math.pow
 
 fun calcularIMC(altura: Double, peso: Double): Double{
-    return peso / (altura / 100).pow(2.0)
+    var imc: Double = 0.0
+
+    imc = peso / (altura / 100).pow(2.0)
+
+    return imc
 }
 
 fun determinarCategoriaIMC(imc: Double): String {
-    return if (imc < 18.5) {
-        "Abaixo do peso"
+
+    var categoria: String = ""
+
+    if (imc < 18.5) {
+        categoria = "Abaixo do peso"
     } else if (imc >= 18.5 && imc < 25.0) {
-        "Peso ideal"
+        categoria = "Peso ideal"
     } else if (imc >= 25.0 && imc < 30.0) {
-        "Levemente acima do peso"
+        categoria = "Levemente acima do peso"
     } else if (imc >= 30.0 && imc < 35.0) {
-        "Obesidade grau I"
+        categoria = "Obesidade grau I"
     } else if (imc >= 35.0 && imc < 40.0) {
-        "Obesidade grau II"
+        categoria = "Obesidade grau II"
     } else {
-        "Obesidade grau III"
+        categoria = "Obesidade grau III"
     }
+
+    return categoria
 }

@@ -28,6 +28,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults.buttonColors
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.CheckboxDefaults.colors
 import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
@@ -69,6 +70,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun IMCScreen(modifier: Modifier = Modifier) {
 
+    //variavel de estado
     var altura by remember {
         mutableStateOf("")
     }
@@ -79,7 +81,7 @@ fun IMCScreen(modifier: Modifier = Modifier) {
         mutableStateOf(0.0)
     }
     var categoriaImc by remember {
-        mutableStateOf("")
+        mutableStateOf("Insira seus dados")
     }
 
     Column(
@@ -233,7 +235,10 @@ fun IMCScreen(modifier: Modifier = Modifier) {
                                     //botao de apagar
                                     Button(
                                         onClick = {
-
+                                            imc = 0.0
+                                            categoriaImc = ""
+                                            altura = ""
+                                            peso = ""
                                         },
                                         colors = buttonColors(
                                             containerColor = Color.Red,
@@ -260,7 +265,7 @@ fun IMCScreen(modifier: Modifier = Modifier) {
                             .height(100.dp),
 
                         colors = CardDefaults.cardColors(
-                            containerColor = colorResource(id = R.color.cor_app_verde)
+                            containerColor = alterarCor(imc)
                         ),
                         elevation = CardDefaults.cardElevation(4.dp),
                     ) {
@@ -290,5 +295,21 @@ fun IMCScreen(modifier: Modifier = Modifier) {
                 }
             }
         }
+    }
+}
+
+@Composable
+fun alterarCor(imc: Double): Color {
+
+    if(imc in 18.5..<25.0) {
+        return colorResource(id = R.color.cor_app_verde)
+
+    } else if (imc in 25.0 ..< 30.0) {
+        return colorResource(id = R.color.cor_app_laranja)
+
+    } else if (imc in 30.0 ..< 40.0) {
+        return colorResource(id = R.color.cor_app_vermelho)
+    } else {
+        return colorResource(id = R.color.cor_app_cinza)
     }
 }
